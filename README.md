@@ -42,6 +42,16 @@ The app features a simple, intuitive interface supporting multiple file formats 
 - Creates quizzes (Multiple Choice, True/False, Identification) from study content
 - Supports self-assessment and active recall
 
+### � Camera Integration
+- Built-in camera for document scanning
+- Real-time text extraction from captured images
+- Direct integration with AI processing pipeline
+
+### 🔐 Security Features
+- Secure API key management with environment variables
+- No hardcoded secrets in source code
+- Safe for version control and collaboration
+
 ### 🚀 User Experience
 - Simple, student-friendly interface
 - Fast processing and summarization
@@ -62,34 +72,47 @@ The app features a simple, intuitive interface supporting multiple file formats 
 | **docx_to_text**  | DOCX file text extraction                    |
 | **sqflite**       | Local database for storing files/quizzes     |
 | **shared_preferences** | Storing onboarding state                |
-| **image_picker**  | Selecting images from device gallery         |
+| **camera**        | Camera functionality for document scanning   |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-lib/
-├── main.dart
-├── helpers/
-│   └── crammy_db_helper.dart
-├── models/
-│   ├── file_data.dart
-│   ├── flashcard_item.dart
-│   ├── mnemonics_item.dart
-│   ├── quiz_item.dart
-│   └── quiz_statistics.dart
-├── screens/
-│   ├── container_home+learn/
-│   ├── header_humburger/
-│   ├── home_screen_overall/
-│   ├── learn_screen_overall/
-│   └── yt_ex.dart
-└── assets/
-	 ├── images/
-	 ├── fonts/
-	 ├── svg/
-	 └── screenshots/
+crammy_app/
+├── .env                              # Environment variables (not in git)
+├── .env.example                      # Environment template
+├── .gitignore                        # Git ignore file
+├── ENV_SETUP.md                      # Environment setup guide
+├── pubspec.yaml                      # Dependencies and configuration
+├── README.md                         # Project documentation
+├── analysis_options.yaml            # Dart analysis options
+├── android/                          # Android platform code
+├── assets/
+│   ├── images/                       # App icons and images
+│   └── svg/                          # SVG assets
+├── lib/
+│   ├── main.dart                     # App entry point
+│   ├── onboarding_screen.dart        # Onboarding flow
+│   ├── file_processor_service.dart   # File processing logic
+│   ├── quiz_generation_service.dart  # AI quiz generation
+│   ├── helpers/
+│   │   ├── crammy_db_helper.dart     # Database helper
+│   │   └── environment_config.dart   # Environment management
+│   ├── models/
+│   │   ├── file_data.dart            # File data model
+│   │   ├── flashcard_item.dart       # Flashcard model
+│   │   ├── mnemonics_item.dart       # Mnemonics model
+│   │   ├── quiz_item.dart            # Quiz model
+│   │   └── quiz_statistics.dart      # Quiz statistics model
+│   └── screens/
+│       ├── container_home+learn/     # Main container screens
+│       ├── header_humburger/         # Header navigation
+│       ├── home_screen_overall/      # Home screen components
+│       └── learn_screen_overall/     # Learning screens
+├── test/
+│   └── widget_test.dart              # Widget tests
+└── web/                              # Web platform support
 ```
 
 ---
@@ -97,9 +120,10 @@ lib/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK (>=3.10.0 <4.0.0)
+- Flutter SDK (>=3.2.0 <4.0.0)
 - Dart SDK
 - Android Studio / VS Code with Flutter extensions
+- Gemini AI API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
 ### Installation
 
@@ -111,14 +135,27 @@ lib/
 	```bash
 	cd crammy_app
 	```
-3. Install dependencies:
+3. Set up environment variables:
+	```bash
+	cp .env.example .env
+	```
+	Then edit `.env` and add your Gemini API key:
+	```env
+	GEMINI_API_KEY=your_actual_api_key_here
+	```
+
+4. Install dependencies:
 	```bash
 	flutter pub get
 	```
-4. Run the app:
+5. Run the app:
 	```bash
 	flutter run
 	```
+
+### Environment Setup
+
+For detailed environment setup instructions, see [ENV_SETUP.md](ENV_SETUP.md).
 
 ---
 
