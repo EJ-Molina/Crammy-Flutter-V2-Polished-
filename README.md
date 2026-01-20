@@ -5,7 +5,7 @@
   <img src="assets/images/crammy_logo.png" alt="Crammy Logo" width="150"/>
 </p>
 
-Crammy is a Flutter mobile application designed to help students quickly convert their study materials into clear, easy-to-read notes. This project was created as my **Endterm Requirement** for the course **Mobile Application Development 1** at **Pangasinan State University - Urdaneta City Campus (PSU-Urdaneta)**.
+Crammy is a Flutter mobile application designed to help students quickly convert their study materials into clear, easy-to-read notes. This project was created as my **Endterm Requirement** for the course **Application Development and Emerging Technologies ** at **Pangasinan State University - Urdaneta City Campus (PSU-Urdaneta)**.
 
 ---
 
